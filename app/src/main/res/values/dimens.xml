@@ -1,0 +1,16 @@
+<resources>
+    <!-- Default screen margins, per the Android Design guidelines. -->
+    <dimen name="activity_horizontal_margin">24dp</dimen>
+    <dimen name="activity_vertical_margin">24dp</dimen>
+
+
+    <!-- this dimension name="widget_margin" is for default version the following purpose:
+        As of Android 4.0, app widgets are automatically given padding between the widget frame and the
+         app widget's bounding box to provide better alignment with other widgets and icons on the user's
+          home screen. To take advantage of this strongly recommended behavior, set your application's
+          targetSdkVersion to 14 or greater.
+
+        It's easy to write a single layout that has custom margins applied for earlier versions of the
+         platform, and has no extra margins for Android 4.0 and greater -->
+    <dimen name="widget_margin">8dp</dimen>
+</resources>

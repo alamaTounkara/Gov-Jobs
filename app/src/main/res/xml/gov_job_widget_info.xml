@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<appwidget-provider xmlns:android="http://schemas.android.com/apk/res/android"
+    android:minWidth="220dip"
+    android:minHeight="220dp"
+    android:minResizeHeight="220dp"
+    android:minResizeWidth="220dp"
+    android:updatePeriodMillis="86400000"
+    android:previewImage="@drawable/widget_preview"
+    android:initialLayout="@layout/gov_job_widget"
+    android:configure="govjobs.govjob.widget.WidgetConfig"
+    android:resizeMode="horizontal|vertical"
+    android:widgetCategory="home_screen|keyguard"
+    android:initialKeyguardLayout="@layout/gov_job_widget">
+</appwidget-provider>
+
+
+    <!-- The home screen contains 16 squares (4×4), and has a width of 320dp and a height of 400dp
+        in total.  each square is 80dp wide and 100dp tall
+
+        Depending on the screen orientation, your widget will have different dimensions. What does remain
+        consistent is the number of squares the widget will occupy.
+        There are six standard widget sizes. Three sizes related to the Home screen grid of 4 x 4 (portrait),
+         the other 3 relate to the Home screen grid of 4 x 4 (landscape) cells.
+        These dimensions correspond to the bounding boxes for the widget we’ll see in the next section.
+
+        portrait
+
+        4 x 1	squares, dimension 320 x 100
+        3 x 3	squares, dimension 240 x 300
+        2 x 2	squares, dimension 160 x 200
+
+        landscape
+
+        4 x 1	squares, dimension 424 x 74
+        3 x 3	squares, dimension 318 x 222
+        2 x 2	squares, dimension 212 x 148
+
+        In Android terminology, a Widget is made up of the following components
+
+        A bounding box
+        A frame
+        The widget’s graphical controls and other elements.
+
+
+        For calculating the minWidth and minHeight, we need to some math.
+    Because the Home screen’s layout orientation (and thus, the cell sizes) can change, as a rule of
+    thumb, you should assume the worst-case cell size of 74 pixels for the height and width of a cell
+    So, for a 1×1 widget, by applying the formula (number of cells * 74) – 2, we arrive at a
+     minWidth=72dip and minHeight=72dip.
+
+     In our caase:
+      for a 3×3 widget square, by applying the formula (number of cells * 74) – 2  = (3 * 74)-2 = 220 for both
+     minWidth=220dip and minHeight=220dip.
+
+
+
+        -->
+
+    <!--  android:configure="example.com.widget.WidgetConfigurationActivity"-->
+    <!--android:widgetCategory="keyguard|home_screen" will add the widget on both the home screen
+    and the lock screen-->
+
+    <!--android:configure="example.com.widget.MainActivity"-->
+
+    <!--
+    Widget updates
+
+    A widget gets its data on a periodic timetable. There are two methods to update a widget, one is
+    based on an XML configuration file and the other is based on the Android AlarmManager service.
+
+    In the widget configuration file you can specify a fixed update interval. The system will wake
+    up after this time interval and call your broadcast receiver to update the widget. The smallest update interval is 1800000 milliseconds (30 minutes).
+
+    The AlarmManager allows you to be more resource efficient and to have a higher frequency of
+    updates. To use this approach, you define a service and schedule this service via the AlarmManager
+    regularly. This service updates the widget.
+
+    Please note that a higher update frequency will wake up the phone from the energy safe mode.
+    As a result your widget consumes more energy.
+
+-->

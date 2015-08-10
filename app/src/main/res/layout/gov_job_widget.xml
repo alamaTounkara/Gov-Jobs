@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="240dp"
+    android:layout_height="300dp"
+    android:padding="@dimen/widget_margin"
+    android:orientation="vertical"
+    android:focusable="true"
+    android:background="@drawable/myshape"
+    android:weightSum="1">
+    <!--
+        As of Android 4.0, app widgets are automatically given padding between the widget frame and the
+        app widget's bounding box to provide better alignment with other widgets and icons on the user's
+        home screen. To take advantage of this strongly recommended behavior, set your application's
+        targetSdkVersion to 14 or greater.
+
+        It's easy to write a single layout that has custom margins applied for earlier versions of the
+        platform, and has no extra margins for Android 4.0 and greater:
+       1: Set your application's targetSdkVersion to 14 or greater.
+       2: Create a layout such as the one below, that references a dimension resource for its margins:
+       3: Create two dimensions resources, one in res/values/ to provide the pre-Android 4.0 custom margins,
+        and one in res/values-v14/ to provide no extra padding for Android 4.0 widgets:
+    -->
+
+
+
+    <!--
+    The main requirement for your app widget layout XML file is that it include one of the
+    collection views: ListView, GridView, StackView, or AdapterViewFlipper. -->
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="0.15"
+        android:background="#1b26ff"
+        android:layout_marginBottom="5dp">
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:text="GOV JOBS"
+            android:id="@+id/wigetHeaderTxt"
+            android:background="#1b26ff"
+            android:textSize="26sp"
+            android:gravity="center_vertical"
+            android:textColor="@android:color/white"
+            android:textStyle="bold"
+            android:layout_weight="1" />
+
+        <ImageView
+            android:id="@+id/wigetSearchImageBtn"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:foreground="@drawable/imagessearch"
+            android:src="@android:drawable/ic_menu_search"
+            android:focusable="true"
+            android:background="#1b26ff" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="0.85">
+
+        <ListView xmlns:android="http://schemas.android.com/apk/res/android"
+            android:id="@+id/widget_listView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            />
+
+        <TextView
+            android:id="@+id/empty_view"
+            style="@android:style/TextAppearance.Medium"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_gravity="center"
+            android:gravity="center_horizontal|center_vertical"
+            android:text="" >
+        </TextView>
+    </LinearLayout>
+
+
+</LinearLayout>
+

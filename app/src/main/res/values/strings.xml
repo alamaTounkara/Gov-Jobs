@@ -1,0 +1,90 @@
+<resources>
+    <!-- ******* TITLE ACTIVITIES ************** -->
+    <string name="title_activity_job_list">GOV-J</string>
+    <string name="title_activity_prefs">Prefs</string>
+    <string name="app_name">GOV JOBS</string>
+    <string name="app_slogant">Your #1 goverment jobs listing</string>
+    <string name="title_activity_job_details">All details</string>
+    <string name="title_activity_application">GOV JOBS-Application</string>
+    <!-- ******* END TITLE ACTIVITIES ************** -->
+
+
+<!-- *******share preference items************** -->
+    <string name="tags">Job criteria</string>
+    <string name="job_title">Job title</string>
+    <string name="min_salary">Minimum salary</string>
+    <string name="max_salary">Maximum salary</string>
+    <string name="zip_code">Zip code</string>
+    <string name="location_name">City or State</string>
+    <string name="senior_level">Senior level</string>
+
+    <string name="job_title_desc">What Industry are you interesting in?</string>
+    <string name="min_salary_desc">Minimum starting salary</string>
+    <string name="max_salary_desc">Maximum starting salary</string>
+    <string name="zip_code_desc">Specify the zip code</string>
+    <string name="location_name_desc">Select city,state or both</string>
+    <string name="senior_level_desc">Are you looking for senior positions?</string>
+    <string name="no_search_result">
+        "No result found !
+
+           . Type another keyword(s)
+
+           . Refine your filter
+
+        Try again!"</string>
+
+  <!-- ******* END share preference items************** -->
+
+
+
+
+    <!-- ******* NAVIGATION DRAWER ITEMS ************** -->
+
+    <string name="drawable_open_text">Drawable opened</string>
+    <string name="drawable_close_text">Drawable closed</string>
+
+    <!-- ******* END NAVIGATION DRAWER ITEMS************** -->
+
+
+
+    <string name="action_settings">Settings</string>
+
+
+
+    <!--<string name="hello_blank_fragment">Hello blank fragment</string>-->
+    <string name="yes_dialogbtn">YES</string>
+    <string name="no_dialogbtn">NO</string>
+
+
+
+    <!-- ******* FORM VALIDATION ITEMS ************** -->
+
+    <string name="formvalidations_numeric">Only numbers are allowed.</string>
+    <string name="formvalidations_not_positive_integer">Field should be positive integer</string>
+    <string name="formvalidations_empty">Field cannot be empty</string>
+    <string name="formvalidations_length_range">Length must be between %1$s and %2$s</string>
+    <string name="formvalidations_length_min">Length must be at least %1$s</string>
+    <string name="formvalidations_length_max">Length must be at most %1$s</string>
+    <string name="formvalidations_not_in_range">Value should be between %1$d and %2$d</string>
+    <string name="formvalidations_not_email">Value is not valid email address</string>
+    <string name="formvalidations_not_alphanumeric">Value is not alphanumeric</string>
+    <!-- ******* END FORM VALIDATION ITEMS ************** -->
+
+
+    <!-- ******* LOGIN-LOGOUT-REGISTER BUTTONS (<u> means underline) ************** -->
+    <string name="loginOnSign_btn"><u>LOGIN</u></string>
+
+    <string name="registerOnLogin_btn"><u>REGISTER</u></string>
+
+
+    <string name="hello_world">Hello world!</string>
+    <string name="title_activity_widget_config">Configuration</string>
+    <string name="appwidget_text">EXAMPLE</string>
+    <string name="configure">Configure</string>
+    <string name="add_widget">Add widget</string>
+
+    <!-- *******END LOGIN-LOGOUT BUTTONS  ************** -->
+
+
+
+</resources>

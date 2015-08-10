@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android" >
+
+    //Jobs are searchable by keyword, location, agency, schedule, or any combination of these.
+    <!--Tags-->
+    <!--A comma-separated string specifying the level of government. Current tags are-->
+    <!--federal, state, county, and city. To get federal and state listings, you would pass in federal,state for the tags parameter.-->
+
+    <!--<string n <string name="tags">Tags</string>-->
+    <!--<string name="job_title">Job title</string>-->
+    <!--<string name="min_salary">Minimum salary</string>-->
+    <!--<string name="max_salary">Maximum salary</string>-->
+    <!--<string name="zip_code">Zip code</string>-->
+    <!--<string name="location_name">City or State</string>-->
+
+
+    <PreferenceCategory android:title="@string/tags" >
+        <!--<EditTextPreference-->
+            <!--android:title="@string/job_title"-->
+            <!--android:summary="@string/job_title_desc"-->
+            <!--android:key="job_title" />-->
+
+        <EditTextPreference
+            android:title="@string/zip_code"
+            android:summary="@string/zip_code_desc"
+            android:key="zip_code"/>
+        <EditTextPreference
+            android:title="@string/location_name"
+            android:summary="@string/location_name_desc"
+            android:key="location_name" />
+        <EditTextPreference
+        android:title="@string/min_salary"
+        android:summary="@string/min_salary_desc"
+        android:key="min_salary" />
+        <EditTextPreference
+            android:title="@string/max_salary"
+            android:summary="@string/max_salary_desc"
+            android:key="max_salary" />
+        <CheckBoxPreference
+            android:title="@string/senior_level"
+            android:summary="@string/senior_level_desc"
+            android:key="senior_level"
+            android:defaultValue="false" />
+
+
+    <!--<PreferenceCategory android:title="Settings">-->
+        <!--<ListPreference-->
+            <!--android:title="History Age (in days)"-->
+            <!--android:summary="Display items up to 30 days old"-->
+            <!--android:key="hh"-->
+            <!--android:defaultValue="30"-->
+            <!--android:entries="@array/days"-->
+            <!--android:entryValues="@array/days"-->
+            <!--android:dialogTitle="Select History Age"/>-->
+    <!--</PreferenceCategory>-->
+
+    <!--<CheckBoxPreference android:key="federal"-->
+        <!--android:title="Federal"-->
+        <!--android:summary="This is red option" />-->
+    <!--<ListPreference-->
+        <!--android:key="language_preference"-->
+        <!--android:title="Language"-->
+        <!--android:entries="@array/Language"-->
+        <!--android:entryValues="@array/languageAlias"/>-->
+
+    <!--<MultiSelectListPreference-->
+        <!--android:title="Gender"-->
+        <!--android:key="gender_preference"-->
+        <!--android:summary="List to choose from"-->
+        <!--android:entries="@array/Voice"-->
+        <!--android:entryValues="@array/VoiceData"-->
+        <!--android:defaultValue="@array/languageAlias"-->
+        <!--android:dialogTitle="Categories"-->
+        <!-->-->
+    <!--</MultiSelectListPreference>-->
+        <!--<MultiSelectListPreference-->
+            <!--android:title="Categories"-->
+            <!--android:key="rssfeeds"-->
+            <!--android:summary="List to choose from"-->
+            <!--android:entries="@array/catos"-->
+            <!--android:entryValues="@array/catovalues"-->
+            <!--android:defaultValue="@array/languageAlias"-->
+            <!--android:dialogTitle="Categories"-->
+            <!-->-->
+        <!--</MultiSelectListPreference>-->
+
+
+    <!--<CheckBoxPreference android:key="red"-->
+        <!--android:title="Red Option"-->
+        <!--android:summary="This is red option" />-->
+
+    <!--<CheckBoxPreference android:key="green"-->
+        <!--android:title="Green Option"-->
+        <!--android:summary="This is green option" />-->
+
+    <!--<CheckBoxPreference android:key="blue"-->
+        <!--android:title="Blue Option"-->
+        <!--android:summary="This is blue option" />-->
+
+
+    </PreferenceCategory>
+</PreferenceScreen>

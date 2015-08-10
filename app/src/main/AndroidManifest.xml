@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="govjobs.govjob" >
+
+    <uses-permission android:name="android.permission.INTERNET" /> <!-- NEED THIS FOR ANY INTERNET RELATED STAFF -->
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.WAKE_LOCK"/>
+    <!-- NEED THIS FOR WRITTING TO EXTERNAL FILE -->
+    <application
+        android:allowBackup="true"
+        android:icon="@drawable/gov_jobs_logo"
+        android:label="@string/app_name"
+        android:theme="@style/AppTheme" >
+        <activity
+            android:name=".MainActivity"
+            android:label="@string/app_name"
+            >
+
+            <!-- <intent-filter> -->
+            <!-- <action android:name="android.intent.action.MAIN" /> -->
+
+
+            <!-- <category android:name="android.intent.category.LAUNCHER" /> -->
+            <!-- </intent-filter> -->
+            <!--android:configChanges="orientation|screenSize"-->
+        </activity>
+        <activity
+            android:name=".JobList"
+            android:label="@string/app_name"
+            android:logo="@drawable/gov_jobs_logo">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".Prefs"
+            android:label="@string/title_activity_prefs" >
+        </activity>
+        <activity
+            android:name=".JobDetailsActivity"
+            android:label="@string/title_activity_job_details"
+            android:parentActivityName=".JobList" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="govjobs.govjob.JobList" />
+        </activity>
+        <activity
+            android:name=".JobApplication"
+            android:label="@string/title_activity_application" >
+        </activity>
+
+
+        <service
+            android:name=".widget.FetchDataService"
+            android:enabled="true"
+            android:exported="true" >
+        </service>
+        <service
+            android:name=".widget.CollectionService"
+            android:enabled="true"
+            android:exported="true"
+            android:permission="android.permission.BIND_REMOTEVIEWS">
+        </service>
+
+        <receiver android:name=".widget.GovJobAppWidgetProvider" >
+            <intent-filter>
+                <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
+                <action android:name="govjobs.govjob.ACTION_WIDGET_START_SERVICE" />
+                <action android:name="govjobs.govjob.ACTION_WIDGET_START_JOBLIST_ACTIVITY" />
+                <action android:name="govjobs.govjob.ACTION_SERVICE_FINISH_FECTH" />
+
+            </intent-filter>
+
+            <meta-data
+                android:name="android.appwidget.provider"
+                android:resource="@xml/gov_job_widget_info" />
+        </receiver>
+
+        <activity android:name=".widget.WidgetConfig" >
+            <intent-filter>
+                <action android:name="android.appwidget.action.APPWIDGET_CONFIGURE" />
+            </intent-filter>
+        </activity>
+    </application>
+
+
+</manifest>

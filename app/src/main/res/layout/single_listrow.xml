@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="10dp">
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:weightSum="1">
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:text="Job Title"
+            android:id="@+id/titleTxt"
+            android:layout_gravity="top"
+            android:textColor="@android:color/holo_blue_light"
+            android:layout_weight="0.7"
+            android:singleLine="true"
+            android:layout_marginTop="3dp"
+            android:textSize="15sp" />
+
+        <!--<TextView-->
+            <!--android:layout_width="0dp"-->
+            <!--android:layout_height="match_parent"-->
+            <!--android:textAppearance="?android:attr/textAppearanceSmall"-->
+            <!--android:text="new"-->
+            <!--android:id="@+id/jobStatusTxt"-->
+            <!--android:textColor="@android:color/holo_red_dark"-->
+            <!--android:layout_gravity="right"-->
+            <!--android:gravity="right"-->
+            <!--android:layout_weight="0.3"-->
+            <!--android:layout_marginTop="3dp"-->
+            <!--android:textSize="12sp" />-->
+    </LinearLayout>
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="1dp"
+        android:minLines="1"
+        android:weightSum="1">
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:text="Company Name"
+            android:id="@+id/companyNameTxt"
+            android:layout_weight="0.7"
+            android:singleLine="true"
+            android:textSize="13sp" />
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:text=">"
+            android:id="@+id/goTxt"
+            android:layout_gravity="right"
+            android:gravity="right"
+            android:layout_weight="0.3" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="0.5dp"
+        android:weightSum="1">
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:text="City, State"
+            android:id="@+id/cityStateTxt"
+            android:layout_weight="0.7"
+            android:singleLine="true"
+            android:textSize="12sp" />
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:text="12/23/1991"
+            android:id="@+id/dateTxt"
+            android:layout_gravity="right"
+            android:gravity="right"
+            android:layout_weight="0.3" />
+    </LinearLayout>
+
+    <!-- android:singleLine="true"-->
+</LinearLayout>

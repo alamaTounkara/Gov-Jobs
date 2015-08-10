@@ -1,0 +1,513 @@
+<RelativeLayout  xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context="govjobs.govjob.JobDetailsActivity"
+    android:orientation="vertical" android:layout_width="fill_parent"
+    android:layout_height="fill_parent" android:id="@+id/RelativeLayout1">
+
+
+    <ScrollView
+    android:id="@+id/scrollView"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:fillViewport="true"
+        android:layout_alignParentTop="true"
+
+        android:layout_above="@+id/commonButtonLayout">
+
+    <LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="10dp"
+    android:weightSum="1"
+        android:nestedScrollingEnabled="true"
+        android:gravity="right">
+
+
+        <!--Don't forget to set the ScrollView attribute android:fillViewport to true.
+         This makes the subviews occupy the whole space of the ScrollView-->
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/headerLayout"
+            android:weightSum="1"
+            android:layout_marginBottom="10dp"
+            android:background="@android:drawable/divider_horizontal_bright">
+
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:text="Job Title"
+                    android:id="@+id/titleTxt"
+                    android:layout_gravity="top"
+                    android:textColor="@android:color/black"
+                    android:layout_marginTop="5dp"
+                    android:textStyle="bold"
+                    android:layout_weight="1"
+                    android:textSize="17sp" />
+
+
+
+
+                <Space
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_weight="0.03" />
+
+                <Button
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:id="@+id/saveTxt"
+                    android:background="@android:drawable/btn_star_big_off"
+                    android:onClick="saveJob"
+                    android:layout_marginRight="5dp"
+                    android:textStyle="bold"
+                    android:autoText="false"
+                    android:textAppearance="?android:attr/buttonStyleSmall"
+                    android:layout_marginTop="-1dp"
+                    style="?android:attr/borderlessButtonStyle"
+                    android:visibility="visible"/>
+                <Button
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:id="@+id/savedTxt"
+                    android:background="@android:drawable/btn_star_big_on"
+                    android:onClick="deleteJob"
+                    android:layout_marginRight="5dp"
+                    android:textStyle="bold"
+                    android:autoText="false"
+                    android:textAppearance="?android:attr/buttonStyleSmall"
+                    android:layout_marginTop="-1dp"
+                    style="?android:attr/borderlessButtonStyle"
+                    android:visibility="gone"/>
+
+                <!--<TextView-->
+                    <!--android:layout_width="wrap_content"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:textAppearance="?android:attr/textAppearanceSmall"-->
+                    <!--android:id="@+id/saveTxt"-->
+                    <!--android:layout_marginRight="5dp"-->
+                    <!--android:textStyle="bold"-->
+                    <!--android:autoText="false"-->
+                    <!--android:background="@android:drawable/btn_star_big_off"-->
+                    <!--android:layout_marginTop="-1dp" />-->
+            </LinearLayout>
+
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:text="Departement: "
+                    android:id="@+id/deptNameTxt"
+                    android:layout_weight="1"
+                    android:textSize="13sp"/>
+
+            </LinearLayout>
+
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="0.02" />
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:nestedScrollingEnabled="true"
+                android:layout_marginBottom="5dp">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:text="City, State"
+                    android:id="@+id/cityStateTxt"
+                    android:layout_weight="1"
+                    android:textSize="13sp"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="5dp"
+                android:layout_gravity="right"
+                android:background="@android:color/white"
+                android:layout_marginTop="-5dp"
+                android:layout_marginBottom="2dp"></LinearLayout>
+        </LinearLayout>
+
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="0.02"
+            android:background="@drawable/abc_list_divider_mtrl_alpha" />
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:weightSum="1"
+            android:focusableInTouchMode="true"
+            android:backgroundTintMode="multiply"
+            android:layout_marginBottom="10dp"
+            android:padding="5dp"
+            android:background="@android:drawable/divider_horizontal_bright">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:text="Agency: "
+                android:id="@+id/agencyTxt"
+                android:textStyle="bold"
+                android:capitalize="characters"
+                android:textSize="13sp"
+                android:layout_weight="0.25" />
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:text="Bureau of the Fiscal Service"
+                android:id="@+id/agencyTxtValue"
+                android:layout_weight="0.75"
+                android:gravity="right"
+                android:textSize="13sp"
+                android:layout_gravity="right" />
+        </LinearLayout>
+
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="0.02"
+            android:background="@drawable/abc_list_divider_mtrl_alpha" />
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="2dp"
+            android:layout_gravity="right"
+            android:background="@android:color/white"
+            android:layout_marginTop="-5dp"
+            android:layout_marginBottom="2dp" />
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:weightSum="1"
+            android:focusableInTouchMode="true"
+            android:backgroundTintMode="multiply"
+            android:layout_marginBottom="10dp"
+            android:padding="5dp"
+            android:background="@android:drawable/divider_horizontal_bright">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:text="Salary range: "
+                android:id="@+id/salaryRangeTxt"
+                android:textStyle="bold"
+                android:capitalize="characters"
+                android:textSize="13sp"
+                android:layout_weight="0.25" />
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:text="$107,325.00 - $139,523.00"
+                android:id="@+id/salarayRangeValueTxt"
+                android:layout_weight="0.75"
+                android:gravity="right"
+                android:textSize="13sp"
+                android:layout_gravity="right" />
+        </LinearLayout>
+
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="0.02"
+            android:background="@drawable/abc_list_divider_mtrl_alpha" />
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="2dp"
+            android:layout_gravity="right"
+            android:background="@android:color/white"
+            android:layout_marginTop="-5dp"
+            android:layout_marginBottom="2dp" />
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:weightSum="1"
+            android:focusableInTouchMode="true"
+            android:backgroundTintMode="multiply"
+            android:layout_marginBottom="10dp"
+            android:padding="5dp"
+            android:background="@android:drawable/divider_horizontal_bright">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:text="OPEN PERIOD:"
+                android:id="@+id/openPeriodTxt"
+                android:textStyle="bold"
+                android:capitalize="characters"
+                android:textSize="13sp"
+                android:layout_weight="0.25" />
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:text="2015/07/29 to 2015/08/11"
+                android:id="@+id/openPeriodTxtValue"
+                android:layout_weight="0.75"
+                android:gravity="right"
+                android:textSize="13sp"
+                android:layout_gravity="right" />
+        </LinearLayout>
+
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="0.02" />
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="2dp"
+            android:layout_gravity="right"
+            android:background="@android:color/white"
+            android:layout_marginTop="-5dp"
+            android:layout_marginBottom="2dp" />
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:weightSum="1"
+            android:focusableInTouchMode="true"
+            android:backgroundTintMode="multiply"
+            android:layout_marginBottom="10dp"
+            android:padding="5dp"
+            android:background="@android:drawable/divider_horizontal_bright">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:text="TYPE"
+                android:id="@+id/positionInTxt"
+                android:textStyle="bold"
+                android:capitalize="characters"
+                android:textSize="13sp"
+                android:layout_weight="0.25" />
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:text="Career/Career Conditional - Full-time"
+                android:id="@+id/positionInfoValueTxt"
+                android:layout_weight="0.75"
+                android:gravity="right"
+                android:textSize="13sp"
+                android:layout_gravity="right" />
+        </LinearLayout>
+
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="0.02" />
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="2dp"
+            android:layout_gravity="right"
+            android:background="@android:color/white"
+            android:layout_marginTop="-5dp"
+            android:layout_marginBottom="2dp" />
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:weightSum="1"
+            android:focusableInTouchMode="true"
+            android:backgroundTintMode="multiply"
+            android:layout_marginBottom="10dp"
+            android:padding="5dp"
+            android:background="@android:drawable/divider_horizontal_bright">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:text="Requirements: "
+                android:id="@+id/jobTypeValueTxt"
+                android:textStyle="bold"
+                android:capitalize="characters"
+                android:textSize="13sp"
+                android:layout_weight="0.25" />
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:text="U.S. citizens ; no prior Federal experience is required."
+                android:id="@+id/requirementTxt"
+                android:layout_weight="0.75"
+                android:gravity="right"
+                android:textSize="13sp"
+                android:layout_gravity="right"
+                android:lineSpacingMultiplier="1.2"/>
+        </LinearLayout>
+
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="0.02" />
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="2dp"
+            android:layout_gravity="right"
+            android:background="@android:color/white"
+            android:layout_marginTop="-5dp"
+            android:layout_marginBottom="2dp" />
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:weightSum="1"
+            android:focusableInTouchMode="true"
+            android:padding="5dp"
+            android:background="@android:drawable/divider_horizontal_bright">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:text="Summary"
+                android:id="@+id/textView9"
+                android:textStyle="bold"
+                android:gravity="center"
+                android:textSize="13sp" />
+
+        </LinearLayout>
+
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="0.02" />
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:weightSum="1"
+            android:focusableInTouchMode="true"
+            android:padding="5dp">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:text="This position is located in the Bureau of the Fiscal Service, Revenue Collection Management (RCM) Tax Collection Division (TCD). The Division manages the systems and services used by the Internal Revenue Service (IRS) for collections under the Internal Revenue Code which includes the Electronic Federal Tax Payment System (EFTPS), IRS Lockboxes, and IRS General Accounts. The Division is responsible for developing and implementing an overall strategy for efficient and cost effective tax collection that maximizes electronic collections. It serves as the central point of contact for managing the relationship with the IRS and ensures that its collection services meet the business needs of the IRS."
+                android:id="@+id/summaryTxt"
+                android:textSize="15sp"
+                android:elegantTextHeight="true"
+                android:lineSpacingMultiplier="1.2"
+               />
+        </LinearLayout>
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="0.2" />
+
+
+
+
+
+
+
+</LinearLayout>
+
+</ScrollView>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentBottom="true"
+        android:background="@android:color/white"
+        android:orientation="horizontal"
+        android:weightSum="1"
+        android:layout_marginTop="5dp"
+        android:id="@+id/commonButtonLayout"
+        android:paddingLeft="20dp"
+        android:paddingRight="10dp">
+
+        <Button
+            android:layout_width="50dp"
+            android:layout_height="wrap_content"
+            android:id="@+id/shareBtn"
+            android:background="@android:drawable/ic_menu_share"
+            android:onClick="shareJob"
+            android:typeface="normal"
+            android:clickable="true"
+            android:focusable="true"
+            />
+
+        <Space
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="0.96" />
+
+        <Button
+            style="?android:attr/buttonStyleSmall"
+            android:layout_width="90dp"
+            android:layout_height="33dp"
+            android:id="@+id/applyBtn"
+            android:background="#ff1b2dae"
+            android:textStyle="bold"
+            android:focusable="false"
+            android:text="APPLY"
+            android:onClick="applyJob"
+            android:textColor="@android:color/white" />
+
+    </LinearLayout>
+
+
+</RelativeLayout>

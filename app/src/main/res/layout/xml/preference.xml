@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android" >
+
+
+    <CheckBoxPreference android:key="red"
+        android:title="Red Option"
+        android:summary="This is red option" />
+
+    <CheckBoxPreference android:key="green"
+        android:title="Green Option"
+        android:summary="This is green option" />
+
+    <CheckBoxPreference android:key="blue"
+        android:title="Blue Option"
+        android:summary="This is blue option" />
+
+    <EditTextPreference android:key="soemValue"
+        android:title="Some Title"
+        android:summary="Some summary" />
+</PreferenceScreen>

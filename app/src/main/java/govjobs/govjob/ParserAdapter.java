@@ -35,7 +35,10 @@ public class ParserAdapter {
     private static final String JOB_LOCATIONS = "Locations";
     private static final String JOB_JOB_SUMMARY = "JobSummary";
     private static final String JOB_APPLY_URL = "ApplyOnlineURL";
-    private static JSONArray mJsonArray;
+    private static JSONArray mJsonArray;//json array
+    private static JSONObject mJsonObject;//json object
+
+
     private static String mJotalJobs=null;//FIRST STRING IN THE JSON OBJECT
 
 
@@ -54,6 +57,12 @@ public class ParserAdapter {
             e.printStackTrace();
         }
         return  null;
+    }
+
+
+
+    public static JSONObject getMyJsonObject(){
+        return  mJsonObject;
     }
 
     public static String getJobTotal(){
@@ -83,6 +92,7 @@ public class ParserAdapter {
             // getting the json object
             JSONArray jsonArray = jsonObject.getJSONArray("JobData");
             mJsonArray = jsonArray;//this JsonArray will be passed to joblist activity to send via intent to another another
+            mJsonObject = jsonObject;//this JsonArray will be passed to the widget service
            // Log.d("result", "" + jsonArray.getJSONObject(0).toString());
 
             Log.d("result", "currentValue 1: " + jsonArray.getJSONObject(0).getString(JOB_POSITION_TITLE));

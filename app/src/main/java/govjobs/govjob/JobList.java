@@ -387,7 +387,7 @@ public class JobList extends AppCompatActivity implements CallBackInterface, Ada
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
         mJSONObject = ParserAdapter.getMyJsonArray(position);
         Intent intent = new Intent(this, JobDetailsActivity.class);
-        intent.putExtra("JsonArray", mJSONObject.toString());
+        intent.putExtra(Constants.JSON_DATA_FOR_JOBDETAILS_KEY, mJSONObject.toString());
         startActivity(intent);
     }
 

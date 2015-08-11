@@ -7,12 +7,15 @@ import android.content.Intent;
 import android.os.IBinder;
 import android.util.Log;
 
+import org.json.JSONObject;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 
 import govjobs.govjob.CallBackInterface;
 import govjobs.govjob.Constants;
 import govjobs.govjob.NonUIFragmentForTask;
+import govjobs.govjob.ParserAdapter;
 import govjobs.govjob.Task;
 
 public class FetchDataService extends Service implements CallBackInterface {
@@ -21,6 +24,7 @@ public class FetchDataService extends Service implements CallBackInterface {
     private static final String USA_JOB_BASE_URL = "https://data.usajobs.gov/api/jobs?NumberOfJobs=";
     private static final String LOG = "MyAppWidgetProvider";
     public static ArrayList<HashMap<String, String>> mResult = new ArrayList<HashMap<String, String>>();
+    public static JSONObject mJSONObject;
     public Task mMyTask;
     private Activity mContext;
     private NonUIFragmentForTask mNonUITaskFragment;
@@ -57,6 +61,7 @@ public class FetchDataService extends Service implements CallBackInterface {
         Log.d(LOG, "USA_JOB_BASE_URL + mNumberOfJobToFetch: " + USA_JOB_BASE_URL + mNumberOfJobToFetch);
         startTaskOnResume(USA_JOB_BASE_URL + mNumberOfJobToFetch);// we defined startTask() in mNonUITaskFragment
         populateWidget();
+        mJSONObject = ParserAdapter.getMyJsonObject();
     }
 
 
@@ -71,13 +76,9 @@ public class FetchDataService extends Service implements CallBackInterface {
 
         if (mMyTask != null) {// cancel the task, even if its runnig
             mMyTask.cancel(true);
-            Log.d("mMyTask", "startTaskOnResume-mMyTask: cancel");
-
         }
         mMyTask = new Task(this);
         mMyTask.execute(url);
-        Log.d("ch", "startTask()");
-        Log.d("mMyTask", "startTaskOnResume-mMyTask: new task");
 
     }
 
@@ -87,6 +88,7 @@ public class FetchDataService extends Service implements CallBackInterface {
         Intent intent = new Intent();
         intent.setAction(Constants.ACTION_SERVICE_FINISH_FECTH);
         intent.putExtra(AppWidgetManager.EXTRA_APPWIDGET_ID, mAppWidgetId);
+        //intent.putExtra(Constants.ACTION_INDIVIDUAL_ITEM_IN_WIDGET_POSITION,mResult);
         sendBroadcast(intent);
         this.stopSelf();
     }

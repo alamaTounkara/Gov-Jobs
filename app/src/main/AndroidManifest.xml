@@ -70,6 +70,7 @@
                 <action android:name="govjobs.govjob.ACTION_WIDGET_START_SERVICE" />
                 <action android:name="govjobs.govjob.ACTION_WIDGET_START_JOBLIST_ACTIVITY" />
                 <action android:name="govjobs.govjob.ACTION_SERVICE_FINISH_FECTH" />
+                <action android:name="govjobs.govjob.ACTION_INDIVIDUAL_ITEM_IN_WIDGET"/>
 
             </intent-filter>
 

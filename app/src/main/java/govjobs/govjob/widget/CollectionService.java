@@ -2,12 +2,18 @@ package govjobs.govjob.widget;
 
 import android.content.Context;
 import android.content.Intent;
+import android.util.Log;
 import android.widget.RemoteViews;
 import android.widget.RemoteViewsService;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 
+import govjobs.govjob.Constants;
 import govjobs.govjob.R;
 
 public class CollectionService extends RemoteViewsService {
@@ -21,9 +27,12 @@ public class CollectionService extends RemoteViewsService {
 
 
     class MyWidgetRemoteViewFactory implements RemoteViewsFactory{
+        private static final String LOG = "MyAppWidgetProvider";
+        public ArrayList<HashMap<String, String>> mDataSource = new ArrayList<HashMap<String, String>>();
         Context mContext;
         int mAppWidgetId;
-        public ArrayList<HashMap<String, String>> mDataSource = new ArrayList<HashMap<String, String>>();
+        private JSONObject mJSONObject;
+
 
 
         /**
@@ -79,11 +88,37 @@ public class CollectionService extends RemoteViewsService {
 
             HashMap<String, String> temp = mDataSource.get(position);
 
+
             //set data for each row in our Listview
             row.setTextViewText(R.id.titleTxt, temp.get("positionTitle"));
             row.setTextViewText(R.id.companyNameTxt,temp.get("orgName"));
-            row.setTextViewText(R.id.cityStateTxt,temp.get("JOB_LOCATIONS"));
-            row.setTextViewText(R.id.dateTxt,temp.get("startDate"));
+            row.setTextViewText(R.id.cityStateTxt, temp.get("JOB_LOCATIONS"));
+            row.setTextViewText(R.id.dateTxt, temp.get("startDate"));
+
+
+            /************SETTING A FILLING INTENT ON EACH ROW IN THE WIDGET LISTVIEW*****/
+            // Next, set a fill-intent, which will be used to fill in the pending intent template
+            // that is set on the collection view in MainActivity-onUpdate().
+          //  Bundle bundle = new Bundle();
+           // bundle.putString(Constants.ACTION_INDIVIDUAL_ITEM_IN_WIDGET_POSITION, position);
+
+            JSONArray jsonArray;
+            try {
+                mJSONObject = FetchDataService.mJSONObject;
+                jsonArray = mJSONObject.getJSONArray("JobData");
+
+                Intent eachItemFillinItent = new Intent();
+                eachItemFillinItent.putExtra(Constants.JSON_DATA_FOR_JOBDETAILS_KEY,
+                                        jsonArray.getJSONObject(position).toString());
+
+                // Make it possible to distinguish the individual on-click action of a given item
+                row.setOnClickFillInIntent(R.id.widget_row,eachItemFillinItent);
+            } catch (JSONException e) {
+                Log.d(LOG,""+e);
+            }
+
+
+            /************END SETTING A FILLING INTENT ON EACH ROW IN THE WIDGET LISTVIEW*****/
 
             return row;
         }

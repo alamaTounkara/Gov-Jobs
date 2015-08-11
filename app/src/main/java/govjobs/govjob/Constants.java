@@ -22,13 +22,10 @@ public class Constants  {
 
 
 
+
+
     public static final String SHARE_PREFERENCE_FILE = "govjobs.govjob_preferences";
-    public final SharedPreferences JOB_LIST_PREFERENCE;
-    public final SharedPreferences.Editor  EDITOR;
-
     public static final String NUMBER_OF_JOB_ON_WIDGET = "NUMBER_OF_ON_WIDGET";
-
-
     public static final String JOB_ID = "DocumentID";
     public static final String JOB_POSITION_TITLE = "JobTitle";
     public static final String JOB_ORGANISATION_NAME = "OrganizationName";
@@ -39,22 +36,26 @@ public class Constants  {
     public static final String JOB_GRADE = "Grade";
     public static final String JOB_WORK_SCHEDULE = "WorkSchedule";
     public static final String JOB_WORK_TYPE = "WorkType";
-
     public static final String JOB_MINIMUM_SALARY = "SalaryMin";
     public static final String JOB_MAXIMUM_SALARY = "SalaryMax";
     public static final String JOB_SALARY_BASIS = "SalaryBasis";
-
     public static final String JOB_START_DATE = "StartDate";
     public static final String JOB_END_DATE = "EndDate";
     public static final String JOB_LOCATIONS = "Locations";
     public static final String JOB_JOB_SUMMARY = "JobSummary";
     public static final String JOB_APPLY_URL = "ApplyOnlineURL";
-
-
     public static final String ACTION_WIDGET_START_SERVICE = "govjobs.govjob.ACTION_WIDGET_START_SERVICE";
     public static final String ACTION_WIDGET_START_JOBLIST_ACTIVITY = "govjobs.govjob.ACTION_WIDGET_START_JOBLIST_ACTIVITY";
     public static final String ACTION_SERVICE_FINISH_FECTH = "govjobs.govjob.ACTION_SERVICE_FINISH_FECTH";
-   // public static final String ACTION_WIDGET_START_SERVICE = "govjobs.govjob.ACTION_WIDGET_START_SERVICE";
+    public static final String ACTION_INDIVIDUAL_ITEM_IN_WIDGET = "govjobs.govjob.ACTION_INDIVIDUAL_ITEM_IN_WIDGET";
+    public static final String ACTION_INDIVIDUAL_ITEM_IN_WIDGET_POSITION = "govjobs.govjob.ACTION_INDIVIDUAL_ITEM_IN_WIDGET_POSITION";
+    public static final String JSON_DATA_FOR_JOBDETAILS_KEY = "govjobs.govjob.JsonArray";
+    public final SharedPreferences JOB_LIST_PREFERENCE;
+    public final SharedPreferences.Editor  EDITOR;
+
+
+
+    // public static final String ACTION_WIDGET_START_SERVICE = "govjobs.govjob.ACTION_WIDGET_START_SERVICE";
 
 
     Constants(Context context){

@@ -18,6 +18,7 @@ import butterknife.InjectView;
 
 public class JobDetailsActivity extends AppCompatActivity {
 
+    private final String IS_IT_A_SAVED_JOB = "isSaved";
     @InjectView(R.id.titleTxt)
     TextView mTitleTxt;
 //    @InjectView(R.id.jobStatusTxt)
@@ -44,10 +45,7 @@ public class JobDetailsActivity extends AppCompatActivity {
     Button mUnsave;
     @InjectView(R.id.savedTxt)
     Button mSaved;
-
     private String mSave;
-    private final String IS_IT_A_SAVED_JOB = "isSaved";
-
     private JSONObject mJsonObj;
 
 
@@ -75,7 +73,7 @@ public class JobDetailsActivity extends AppCompatActivity {
 
         try {
             Intent intent = getIntent();
-            mJsonObj = new JSONObject(intent.getStringExtra("JsonArray"));
+            mJsonObj = new JSONObject(intent.getStringExtra(Constants.JSON_DATA_FOR_JOBDETAILS_KEY));
             mSave = intent.getStringExtra(IS_IT_A_SAVED_JOB);
 
             processJSON(mJsonObj);
@@ -183,7 +181,7 @@ public class JobDetailsActivity extends AppCompatActivity {
         //create a new intent
         Intent intent = new Intent();
         //Set and action (what do you want to do?)
-        intent.setAction(intent.ACTION_SEND);
+        intent.setAction(Intent.ACTION_SEND);
 
         Uri jobUrl = Uri.parse(url);
         intent.putExtra(Intent.EXTRA_SUBJECT, "Job opportunity");

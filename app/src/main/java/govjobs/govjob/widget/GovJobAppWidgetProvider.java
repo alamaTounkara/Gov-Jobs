@@ -11,6 +11,7 @@ import android.util.Log;
 import android.widget.RemoteViews;
 
 import govjobs.govjob.Constants;
+import govjobs.govjob.JobDetailsActivity;
 import govjobs.govjob.JobList;
 import govjobs.govjob.R;
 
@@ -18,7 +19,13 @@ import govjobs.govjob.R;
  * Created by alamatounkara on 8/9/15.
  */
 public class GovJobAppWidgetProvider extends AppWidgetProvider {
-    private static final String LOG = " MyAppWidgetProvider";
+    private static final String LOG = "MyAppWidgetProvider";
+    /**
+     * FetchDataService fetches data,and send broadcast to GobJobAppWidgetProvider, this
+     * broadcast will be received by WidgetProvider onReceive which in turn
+     * updates the widget
+     */
+    private PendingIntent service = null;
 
     /**
      * onEnabled(): An instance of AlarmManager is created here to start the repeating timer
@@ -49,13 +56,6 @@ public class GovJobAppWidgetProvider extends AppWidgetProvider {
         super.onDisabled(context);
     }
 
-
-    /**
-     * FetchDataService fetches data,and send broadcast to GobJobAppWidgetProvider, this
-     * broadcast will be received by WidgetProvider onReceive which in turn
-     * updates the widget
-     */
-    private PendingIntent service = null;
     @Override
     public void onUpdate(Context context, AppWidgetManager appWidgetManager, int[] appWidgetIds) {
         int mCount = appWidgetIds.length;
@@ -103,6 +103,25 @@ public class GovJobAppWidgetProvider extends AppWidgetProvider {
         remoteViews.setOnClickPendingIntent(R.id.wigetSearchImageBtn,pendingIntent);
         /************Start the activity with an intent when the search icon on the widget is clicked*****/
 
+
+        /************START JOB DESCRIPTION ACTTIVITY WHEN A PARTICULAR LISTVIEW ITEM IS CLICKED*****/
+        // This section makes it possible for items to have individualized behavior.
+        // It does this by setting up a pending intent template. Individuals items of a collection
+        // cannot set up their own pending intents. Instead, the collection as a whole sets
+        // up a pending intent template, and the individual items set a fillInIntent
+        // to create unique behavior on an item-by-item basis.
+        Intent itemInWidgetIntent = new Intent(context, JobDetailsActivity.class);
+
+        // Set the action for the intent.
+        // When the user touches a particular view, it will have the effect of
+        // STARTING A JobDetailsActivity activity, ACTION_INDIVIDUAL_ITEM_IN_WIDGET.
+        itemInWidgetIntent.setAction(Constants.ACTION_INDIVIDUAL_ITEM_IN_WIDGET);
+        itemInWidgetIntent.putExtra(AppWidgetManager.EXTRA_APPWIDGET_ID, appWidgetId);
+        upadateIntent.setData(Uri.parse(upadateIntent.toUri(Intent.URI_INTENT_SCHEME)));
+        PendingIntent itemInWidgetPendingIntent = PendingIntent.getActivity(context, 0, itemInWidgetIntent, PendingIntent.FLAG_UPDATE_CURRENT);
+        remoteViews.setPendingIntentTemplate(R.id.widget_listView, itemInWidgetPendingIntent);
+        /************END START JOB DESCRIPTION ACTTIVITY WHEN A PARTICULAR LISTVIEW ITEM IS CLICKED*****/
+
         return remoteViews;
     }
 
@@ -127,6 +146,24 @@ public class GovJobAppWidgetProvider extends AppWidgetProvider {
                 RemoteViews remoteViews = updateWidgetListView(context, appWidgetId);
 
                 manager.updateAppWidget(appWidgetId, remoteViews);
+
+            }else if(intent.getAction().equals(Constants.ACTION_INDIVIDUAL_ITEM_IN_WIDGET)){
+                /**
+                 * Checks to see whether the intent's action is ACTION_INDIVIDUAL_ITEM_IN_WIDGET.
+                 * If it is, the app widget displays a start the job description activiy for the current item.
+                 * this intent is sent from onUpdate()  setPendingIntentTemplate
+                 */
+                int appWidgetId = intent.getIntExtra(AppWidgetManager.EXTRA_APPWIDGET_ID,
+                        AppWidgetManager.INVALID_APPWIDGET_ID);
+
+                String jsonData = intent.getStringExtra(Constants.JSON_DATA_FOR_JOBDETAILS_KEY);
+                Log.d(LOG, "jsonData: " + jsonData);
+
+                Intent jobDetailsIntent = new Intent(context,JobDetailsActivity.class);
+                jobDetailsIntent.putExtra(Constants.JSON_DATA_FOR_JOBDETAILS_KEY, jsonData);
+                jobDetailsIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+
+                context.startActivity(jobDetailsIntent);
 
             }
         }

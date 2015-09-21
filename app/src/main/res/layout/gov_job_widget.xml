@@ -58,6 +58,8 @@
             android:background="#1b26ff" />
     </LinearLayout>
 
+
+
     <LinearLayout
         android:orientation="horizontal"
         android:layout_width="match_parent"
@@ -71,15 +73,15 @@
             android:gravity="center"
             />
 
-        <TextView
+        <ProgressBar
             android:id="@+id/empty_view"
-            style="@android:style/TextAppearance.Medium"
+            style="?android:attr/progressBarStyleLarge"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_gravity="center"
             android:gravity="center_horizontal|center_vertical"
-            android:text="" >
-        </TextView>
+             >
+        </ProgressBar>
+
     </LinearLayout>
 
 

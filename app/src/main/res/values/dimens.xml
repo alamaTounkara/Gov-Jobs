@@ -2,6 +2,9 @@
     <!-- Default screen margins, per the Android Design guidelines. -->
     <dimen name="activity_horizontal_margin">24dp</dimen>
     <dimen name="activity_vertical_margin">24dp</dimen>
+    <dimen name="nav_drawer_width">280dp</dimen>
+    <dimen name="land_nav_drawer_width">380dp</dimen>
+
 
 
     <!-- this dimension name="widget_margin" is for default version the following purpose:
@@ -13,4 +16,11 @@
         It's easy to write a single layout that has custom margins applied for earlier versions of the
          platform, and has no extra margins for Android 4.0 and greater -->
     <dimen name="widget_margin">8dp</dimen>
+    <dimen name="width_0_dp">0dp</dimen>
+    <dimen name="height_0_dp">0dp</dimen>
+    <dimen name="toolbar_paading_top">0dp</dimen>
+    <dimen name="filter_btn_height">18dp</dimen>
+    <dimen name="filter_btn_margin_top">10dp</dimen>
+    <dimen name="search_hint_text_size">12sp</dimen>
+
 </resources>

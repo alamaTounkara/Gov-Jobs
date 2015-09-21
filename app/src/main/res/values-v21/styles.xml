@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="AppTheme." parent="MyCustumTheme">
+        <!--
+            Theme customizations available in newer API levels can go in
+            res/values-vXX/styles.xml, while customizations related to
+            backward-compatibility can go here.
+        -->
+        <!-- the status bar(where the battery icon, wifi icon and so on appear) background color.
+       <!- It is called  colorPrimaryDark &ndash;&gt;-->
+        <!--<item name="colorPrimaryDark">@color/MyPrimaryColorDark</item>-->
+
+        <!--&lt;!&ndash; the toolbar(action bar) backgroud color. It is called colorPrimary  &ndash;&gt;-->
+        <!--<item name="colorPrimary">@color/MyPrimaryColor</item>-->
+
+        <!--&lt;!&ndash; accent color is used for your primary action button and components like switches or sliders.&ndash;&gt;-->
+        <!--<item name="colorAccent">@color/MyAccentColor</item>-->
+
+        <!-- making the status(where the battery and wifi icons appear) Translucent(transparent),
+       will also take of any margin that was between the  status bar and the view bellow it.
+       only works on API 19 and up.
+       Note: to make sure there is a padding between the status bar(while it is
+        translucent-transparent) and the layout below it, add 'android:fitsSystemWindows="true"' as
+       the layout(the one bellow the status bar) attribute-->
+        <item name="android:windowTranslucentStatus">true</item>
+    </style>
+</resources>

@@ -1,0 +1,590 @@
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context="govjobs.govjob.ui.NavDrawerFragment"
+    android:id="@+id/drawerList"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#ffafedff"
+    android:padding="2dp"
+    android:layout_gravity="start"
+    android:gravity="center_horizontal"
+    android:orientation="vertical">
+    <!-- android:layout_gravity="start"-->
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#ffafedff"
+        tools:context=".MainActivity">
+        <!-- android:layout_gravity="start"-->
+
+        <TextView
+            android:id="@+id/govJobLogo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentTop="true"
+            android:gravity="center_horizontal"
+            android:text="@string/app_name"
+            android:textColor="@android:color/white"
+            android:textSize="33sp"
+            android:textStyle="bold"></TextView>
+
+        <TextView
+            android:id="@+id/govJobSlogan"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignLeft="@id/govJobLogo"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentRight="true"
+            android:layout_below="@id/govJobLogo"
+            android:layout_marginBottom="15dp"
+            android:gravity="center_horizontal"
+            android:text="@string/app_slogant"
+            android:textColor="@android:color/white"
+            android:textSize="11sp"
+            android:textStyle="bold"></TextView>
+        <!--android:layout_gravity="start"-->
+
+        <LinearLayout
+            android:id="@+id/logindrawerLisContent"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@+id/govJobSlogan"
+            android:background="#ffafedff"
+            android:orientation="vertical"
+            android:padding="3dp"
+            android:visibility="visible"
+            tools:context=".MainActivity">
+
+
+            <TextView
+                android:id="@+id/emailLbl"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentRight="true"
+                android:layout_marginLeft="20dp"
+                android:gravity="left"
+                android:text="Email:"
+                android:textColor="@android:color/white"
+                android:textSize="22sp"
+                android:textStyle="bold"></TextView>
+
+            <EditText
+                android:id="@+id/emailInput"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignLeft="@id/emailLbl"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentRight="true"
+                android:layout_below="@id/emailLbl"
+                android:layout_marginLeft="20dp"
+                android:autoText="false"
+                android:background="@android:color/white"
+                android:editable="true"
+                android:ems="10"
+                android:gravity="left"
+                android:imeOptions="flagNoExtractUi"
+                android:selectAllOnFocus="true"
+                android:singleLine="true"
+                android:text=""
+                android:textColor="@android:color/black">
+
+
+            </EditText>
+
+            <TextView
+                android:id="@+id/pwdLbl"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignLeft="@id/emailInput"
+                android:layout_alignParentLeft="true"
+                android:layout_below="@id/emailInput"
+                android:layout_marginLeft="20dp"
+                android:gravity="left"
+                android:text="Password:"
+                android:textColor="@android:color/white"
+                android:textSize="22sp"
+                android:textStyle="bold"
+                ></TextView>
+
+            <EditText
+                android:id="@+id/pwdInput"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignLeft="@id/emailLbl"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentRight="true"
+                android:layout_below="@id/pwdLbl"
+                android:layout_marginBottom="10dp"
+                android:layout_marginLeft="20dp"
+                android:autoText="false"
+                android:background="@android:color/white"
+                android:editable="true"
+                android:ems="10"
+                android:gravity="left"
+                android:minLines="1"
+                android:password="true"
+                android:selectAllOnFocus="true"
+                android:singleLine="true"
+                android:text=""
+                android:textColor="@android:color/black"
+                android:imeOptions="actionGo"></EditText>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                android:orientation="horizontal">
+
+                <CheckBox
+                    android:id="@+id/saveChkBox"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignLeft="@id/emailInput"
+                    android:layout_alignParentLeft="true"
+                    android:layout_below="@id/pwdInput"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginRight="10dp"
+                    android:background="@android:color/white"
+                    android:imeOptions="actionGo"
+                    android:onClick="saveLoginCheck"
+                    android:selectAllOnFocus="true"
+                    android:textColor="@android:color/white"></CheckBox>
+
+                <TextView
+                    android:id="@+id/saveChkBoxLbl"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignBaseline="@id/saveChkBox"
+                    android:layout_below="@id/emailInput"
+                    android:layout_toRightOf="@id/saveChkBox"
+                    android:gravity="center"
+                    android:text="Save login"
+                    android:textColor="@android:color/white"
+                    android:textSize="22sp"
+                    android:textStyle="bold"></TextView>
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                android:orientation="vertical">
+
+                <Button
+                    android:id="@+id/loginBtn"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_alignLeft="@+id/saveChkBox"
+                    android:layout_alignParentEnd="true"
+                    android:layout_alignParentRight="true"
+                    android:layout_alignStart="@+id/saveChkBox"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="20dp"
+                    android:background="#ff1628ff"
+                    android:focusable="true"
+                    android:onClick="loginUser"
+                    android:text="Login"
+                    android:textColor="@android:color/white"
+                    android:textStyle="bold" />
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/alreadyHaveAcoountLbl"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_above="@+id/needAccountLink"
+                android:layout_alignLeft="@+id/signUpOnLoginBtn"
+                android:layout_alignStart="@+id/signUpOnLoginBtn"
+                android:layout_marginBottom="10dp"
+                android:layout_marginLeft="20dp"
+                android:gravity="left|center"
+                android:text="Need an account? Please"
+                android:textColor="@android:color/white"
+                android:textSize="22sp"></TextView>
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                android:orientation="horizontal">
+
+                <Button
+                    android:id="@+id/signUpOnLoginBtn"
+                    style="?android:attr/buttonStyleSmall"
+                    android:layout_width="wrap_content"
+                    android:layout_height="22dp"
+                    android:layout_below="@+id/alreadyHaveAcoountLbl"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginRight="0.9dp"
+                    android:background="@android:color/transparent"
+                    android:focusable="true"
+                    android:onClick="goToRegisterPage"
+                    android:text="@string/registerOnLogin_btn"
+                    android:textColor="@android:color/white"
+                    android:textColorHighlight="@color/background_material_light"
+                    android:textColorLink="@android:color/white"
+                    android:textSize="18sp"
+                    android:textStyle="bold|italic" />
+
+            </LinearLayout>
+
+
+
+
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:id="@+id/signupdrawerLisContent"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@+id/govJobSlogan"
+            android:background="#ffafedff"
+            android:orientation="vertical"
+            android:padding="10dp"
+            android:visibility="gone"
+            android:weightSum="1">
+            <!--android:layout_gravity="start"-->
+
+
+            <LinearLayout
+                android:id="@+id/linearLayout"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="0.08"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/signupNameLbl"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="20dp"
+                    android:gravity="left"
+                    android:text="Full Name"
+                    android:textColor="@android:color/white"
+                    android:textSize="22sp"
+                    android:textStyle="bold"></TextView>
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_centerHorizontal="true"
+                android:layout_weight="0.08"
+                android:orientation="horizontal">
+
+                <EditText
+                    android:id="@+id/signupNameInput"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:layout_alignParentRight="true"
+                    android:layout_below="@+id/signupNameLbl"
+                    android:layout_marginLeft="20dp"
+                    android:autoText="false"
+                    android:background="@android:color/white"
+                    android:editable="true"
+                    android:ems="10"
+                    android:gravity="left"
+                    android:imeOptions="flagNoExtractUi"
+                    android:maxLines="1"
+                    android:minLines="1"
+                    android:selectAllOnFocus="true"
+                    android:singleLine="true"
+                    android:text=""
+                    android:textColor="@android:color/black"></EditText>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="0.08"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/emailSignupLbl"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="20dp"
+                    android:gravity="left"
+                    android:text="Email:"
+                    android:textColor="@android:color/white"
+
+                    android:textSize="22sp"
+                    android:textStyle="bold"></TextView>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="0.08"
+                android:orientation="horizontal">
+
+                <EditText
+                    android:id="@+id/emailSignupInput"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="20dp"
+                    android:autoText="false"
+                    android:background="@android:color/white"
+                    android:editable="true"
+                    android:ems="10"
+                    android:gravity="left"
+                    android:imeOptions="flagNoExtractUi"
+                    android:maxLines="1"
+                    android:minLines="1"
+                    android:selectAllOnFocus="true"
+                    android:singleLine="true"
+                    android:text=""
+                    android:textColor="@android:color/black"></EditText>
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:id="@+id/linearLayout3"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_marginBottom="20dp"
+                android:layout_weight="0.17"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/pwdSignupLbl"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="20dp"
+                    android:gravity="left"
+                    android:text="Password:"
+                    android:textColor="@android:color/white"
+                    android:textSize="22sp"
+                    android:textStyle="bold"></TextView>
+
+                <EditText
+                    android:id="@+id/pwdSignupInput"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="20dp"
+                    android:autoText="false"
+                    android:background="@android:color/white"
+                    android:editable="true"
+                    android:ems="10"
+                    android:gravity="left"
+                    android:imeOptions="actionGo"
+                    android:minLines="1"
+                    android:password="true"
+                    android:selectAllOnFocus="true"
+                    android:singleLine="true"
+                    android:text=""
+                    android:textColor="@android:color/black"></EditText>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_marginBottom="20dp"
+                android:layout_weight="0.09"
+                android:orientation="horizontal">
+
+                <Button
+                    android:id="@+id/signUpBtn"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="20dp"
+                    android:background="#ff1628ff"
+                    android:onClick="signUpUser"
+                    android:text="Sign Up"
+                    android:textColor="@android:color/white"
+                    android:textStyle="bold"
+                    android:visibility="visible" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/linearLayout2"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_marginBottom="10dp"
+                android:layout_marginTop="10dp"
+                android:layout_weight="0.175"
+                android:orientation="vertical"
+                android:visibility="visible">
+
+                <TextView
+                    android:id="@+id/alreadyHaeveAcoountLbl"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+
+                    android:layout_marginLeft="20dp"
+                    android:gravity="left|center"
+                    android:text="Already have an account?"
+                    android:textColor="@android:color/white"
+                    android:textSize="20sp"></TextView>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="0.2"
+                android:orientation="horizontal"
+                android:visibility="visible">
+
+                <Button
+                    android:id="@+id/loginOnSignUpBtn"
+                    style="?android:attr/buttonStyleSmall"
+                    android:layout_width="wrap_content"
+                    android:layout_height="22dp"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginRight="6dp"
+                    android:background="@android:color/transparent"
+                    android:focusable="true"
+                    android:onClick="goToLoginPage"
+                    android:text="@string/loginOnSign_btn"
+                    android:textColor="@android:color/white"
+                    android:textColorHighlight="@color/background_material_light"
+                    android:textColorLink="@android:color/white"
+                    android:textSize="18sp"
+                    android:textStyle="bold|italic" />
+
+                <TextView
+                    android:id="@+id/alreadyHaveAcoountLink"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentBottom="true"
+                    android:autoLink="web"
+                    android:clickable="true"
+                    android:gravity="center_horizontal"
+                    android:linksClickable="true"
+                    android:text="using your phone"
+                    android:textColor="@android:color/white"
+                    android:textSize="20sp"></TextView>
+
+            </LinearLayout>
+
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/userBoardLisContent"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_below="@+id/govJobSlogan"
+            android:background="#ffafedff"
+            android:orientation="vertical"
+            android:padding="10dp"
+            android:visibility="gone"
+            android:weightSum="1">
+            <!--android:layout_gravity="start"-->
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginBottom="20dp"
+                android:layout_marginLeft="10dp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/welcomeNameLbl"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentTop="true"
+                    android:gravity="left"
+                    android:text="Welcome"
+                    android:textSize="22sp"
+                    android:textStyle="bold"></TextView>
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="right"
+                android:layout_marginBottom="20dp"
+                android:layout_marginLeft="10dp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/numberOfJobTxt"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentStart="true"
+                    android:text="Number of job"
+                    android:textAppearance="?android:attr/textAppearanceMedium" />
+            </LinearLayout>
+
+            <!--<LinearLayout-->
+            <!--android:orientation="horizontal"-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:layout_gravity="center_horizontal"-->
+            <!--android:layout_marginBottom="20dp">-->
+
+            <!--<TextView-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:textAppearance="?android:attr/textAppearanceMedium"-->
+            <!--android:text="List of job saved"-->
+            <!--android:id="@+id/listOfJobSavedTxt"-->
+            <!--android:layout_below="@+id/numberOfJobTxt"-->
+            <!--android:layout_alignParentLeft="true"-->
+            <!--android:layout_alignParentStart="true" />-->
+            <!--</LinearLayout>-->
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginLeft="10dp"
+                android:layout_weight="1"
+                android:orientation="vertical">
+
+                <ListView
+                    android:id="@+id/listView2"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="10dp"
+                android:layout_weight="0.25"
+                android:gravity="bottom"
+                android:orientation="vertical">
+
+                <Button
+                    android:id="@+id/logOutBtn"
+                    android:layout_width="wrap_content"
+                    android:layout_height="25dp"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentStart="true"
+                    android:layout_below="@+id/listOfJobSavedTxt"
+                    android:layout_marginBottom="0dp"
+                    android:background="#ff1628ff"
+                    android:onClick="logUserOut"
+                    android:text="Log out"
+                    android:textColor="@android:color/white"
+                    android:textStyle="bold" />
+            </LinearLayout>
+
+
+        </LinearLayout>
+
+
+    </RelativeLayout>
+
+</LinearLayout>

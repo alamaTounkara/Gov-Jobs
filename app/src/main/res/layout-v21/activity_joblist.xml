@@ -6,16 +6,17 @@
     android:orientation="vertical"
     tools:context="govjobs.govjob.ui.JobList">
 
-
     <include
-        android:id="@+id/appToolbar"
-        layout="@layout/app_toolbar"></include>
+    android:id="@+id/appToolbar"
+    layout="@layout/app_toolbar"
+    xmlns:android="http://schemas.android.com/apk/res/android"></include>
 
-    <android.support.v4.widget.DrawerLayout
-        android:id="@+id/drawerLayout"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
-
+<android.support.v4.widget.DrawerLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/drawerLayout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    >
 
     <LinearLayout
         android:id="@+id/mainContent"
@@ -32,63 +33,58 @@
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_weight="0.18"
-                android:orientation="horizontal"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
                 android:weightSum="1">
 
                 <LinearLayout
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="0.8"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="0.35"
                     android:background="@android:color/white"
                     android:orientation="horizontal"
                     android:weightSum="1">
 
                     <EditText
                         android:id="@+id/searchEditText"
-                        android:layout_width="0dp"
+                        android:layout_width="@dimen/width_0_dp"
                         android:layout_height="wrap_content"
-                        android:focusable="true"
-                        android:clickable="true"
-                        android:focusableInTouchMode="true"
+                        android:layout_weight="0.9"
                         android:hint="keyword(s) or job title"
-                        android:textSize="16sp"
-                        android:layout_weight="0.85"
+                        android:textSize="14sp"
                         android:imeOptions="actionSearch"
-                        android:singleLine="true"/>
-
+                        android:singleLine="true"
+                       />
+                    <!--<android:imeOptions="actionSearch"-->
+                    <!--android:imeActionLabel="@string/imeSearch_ActionLabel"-->
 
                     <ImageView
                         android:id="@+id/searchImageView"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
+                        android:layout_weight="0.1"
+
                         android:onClick="searchJobs"
-                        android:focusableInTouchMode="true"
-                        android:focusable="true"
+                        android:clickable="true"
                         android:src="@android:drawable/ic_menu_search"
-                        android:layout_weight="0.15"
-                        android:clickable="true" />
+                        android:focusable="true"
+                        android:focusableInTouchMode="true" />
 
                 </LinearLayout>
 
-                <Space
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="0.05" />
-
                 <LinearLayout
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="top"
-                    android:layout_weight="0.15"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/filter_btn_height"
+                    android:layout_gravity="bottom"
+                    android:layout_marginTop="@dimen/filter_btn_margin_top"
+                    android:layout_weight="1"
                     android:gravity="center"
                     android:orientation="horizontal">
 
                     <Button
                         android:id="@+id/filterBtn"
                         android:layout_width="match_parent"
-                        android:layout_height="40dp"
+                        android:layout_height="wrap_content"
                         android:background="@android:color/white"
                         android:gravity="center"
                         android:onClick="showFilterOptions"
@@ -101,19 +97,17 @@
                     </Button>
 
                 </LinearLayout>
-
             </LinearLayout>
 
             <Space
                 android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_weight="0.02" />
+                android:layout_height="1dp" />
 
             <LinearLayout
                 android:id="@+id/progressLinearLayout"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
-                android:layout_weight="0.1"
+                android:layout_weight="0.05"
                 android:gravity="center"
                 android:orientation="horizontal"
                 android:visibility="visible">
@@ -144,7 +138,7 @@
                 android:id="@+id/numbOfJobTxt"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
-                android:layout_weight="0.1"
+                android:layout_weight="0.04"
                 android:textAppearance="?android:attr/textAppearanceSmall" />
 
             <LinearLayout
@@ -159,7 +153,7 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
-                android:layout_weight="0.73"
+                android:layout_weight="1"
                 android:orientation="vertical"
                 android:visibility="visible"
                 android:weightSum="1">
@@ -186,19 +180,18 @@
                     android:visibility="gone" />
             </LinearLayout>
 
+
         </LinearLayout>
     </LinearLayout>
 
-        <!--put all the width and height dimensions in 'dimen' folder, that will make your app
-        appearance work accross muiltiple device screen-->
-        <fragment
-            android:id="@+id/nav_drawer_frag"
-            android:name="govjobs.govjob.ui.NavDrawerFragment"
-            android:layout_width="@dimen/land_nav_drawer_width"
-            android:layout_height="match_parent"
-            android:layout_gravity="start"
-            app:layout="@layout/fragment_nav_drawer"
-            tools:layout="@layout/fragment_nav_drawer" />
+    <fragment
+        android:id="@+id/nav_drawer_frag"
+        android:name="govjobs.govjob.ui.NavDrawerFragment"
+        android:layout_width="@dimen/nav_drawer_width"
+        android:layout_height="match_parent"
+        android:layout_gravity="start"
+        app:layout="@layout/fragment_nav_drawer"
+        tools:layout="@layout/fragment_nav_drawer" />
 
 
 

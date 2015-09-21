@@ -13,27 +13,22 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 import java.util.HashMap;
 
-import govjobs.govjob.Constants;
+import govjobs.govjob.util.Constants;
 import govjobs.govjob.R;
 
 public class CollectionService extends RemoteViewsService {
+    public static  ArrayList<HashMap<String, String>> mDataSource = new ArrayList<HashMap<String, String>>();
 
     @Override
     public RemoteViewsFactory onGetViewFactory(Intent intent) {
-        return (new MyWidgetRemoteViewFactory(getApplicationContext(),intent));
+        return (new MyWidgetRemoteViewFactory(getApplicationContext(), intent));
     }
 
 
-
-
-    class MyWidgetRemoteViewFactory implements RemoteViewsFactory{
+    class MyWidgetRemoteViewFactory implements RemoteViewsFactory {
         private static final String LOG = "MyAppWidgetProvider";
-        public ArrayList<HashMap<String, String>> mDataSource = new ArrayList<HashMap<String, String>>();
         Context mContext;
-        int mAppWidgetId;
         private JSONObject mJSONObject;
-
-
 
         /**
          * Your custom class that implements the RemoteViewsFactory interface provides the app widget
@@ -48,20 +43,18 @@ public class CollectionService extends RemoteViewsService {
          * subclass are onCreate() and getViewAt() .
          */
 
-        MyWidgetRemoteViewFactory(Context context, Intent intent){
+        MyWidgetRemoteViewFactory(Context context, Intent intent) {
             mContext = context;
-            mDataSource = (ArrayList<HashMap<String, String>>) FetchDataService.mResult.clone();
         }
+
 
 
         @Override
         public void onCreate() {
-
         }
 
         @Override
         public void onDataSetChanged() {
-
         }
 
         @Override
@@ -71,7 +64,7 @@ public class CollectionService extends RemoteViewsService {
 
         @Override
         public int getCount() {
-            return  mDataSource.size();
+            return mDataSource.size();
         }
 
         @Override
@@ -85,22 +78,20 @@ public class CollectionService extends RemoteViewsService {
 
             //construct a remoteView(view)for a single row
             RemoteViews row = new RemoteViews(mContext.getPackageName(), R.layout.single_row);
+            if (mDataSource.size() > 0) {
+                HashMap<String, String> temp =mDataSource.get(position);
+                //set data for each row in our Listview
+                row.setTextViewText(R.id.titleTxt, temp.get("positionTitle"));
+                row.setTextViewText(R.id.companyNameTxt, temp.get("orgName"));
+                row.setTextViewText(R.id.cityStateTxt, temp.get("JOB_LOCATIONS"));
+                row.setTextViewText(R.id.dateTxt, temp.get("startDate"));
 
-            HashMap<String, String> temp = mDataSource.get(position);
-
-
-            //set data for each row in our Listview
-            row.setTextViewText(R.id.titleTxt, temp.get("positionTitle"));
-            row.setTextViewText(R.id.companyNameTxt,temp.get("orgName"));
-            row.setTextViewText(R.id.cityStateTxt, temp.get("JOB_LOCATIONS"));
-            row.setTextViewText(R.id.dateTxt, temp.get("startDate"));
-
-
+            }
             /************SETTING A FILLING INTENT ON EACH ROW IN THE WIDGET LISTVIEW*****/
             // Next, set a fill-intent, which will be used to fill in the pending intent template
             // that is set on the collection view in MainActivity-onUpdate().
-          //  Bundle bundle = new Bundle();
-           // bundle.putString(Constants.ACTION_INDIVIDUAL_ITEM_IN_WIDGET_POSITION, position);
+            //  Bundle bundle = new Bundle();
+            // bundle.putString(Constants.ACTION_INDIVIDUAL_ITEM_IN_WIDGET_POSITION, position);
 
             JSONArray jsonArray;
             try {
@@ -109,12 +100,12 @@ public class CollectionService extends RemoteViewsService {
 
                 Intent eachItemFillinItent = new Intent();
                 eachItemFillinItent.putExtra(Constants.JSON_DATA_FOR_JOBDETAILS_KEY,
-                                        jsonArray.getJSONObject(position).toString());
+                        jsonArray.getJSONObject(position).toString());
 
                 // Make it possible to distinguish the individual on-click action of a given item
-                row.setOnClickFillInIntent(R.id.widget_row,eachItemFillinItent);
+                row.setOnClickFillInIntent(R.id.widget_row, eachItemFillinItent);
             } catch (JSONException e) {
-                Log.d(LOG,""+e);
+                Log.d(LOG, "" + e);
             }
 
 
@@ -142,5 +133,8 @@ public class CollectionService extends RemoteViewsService {
         public boolean hasStableIds() {
             return false;
         }
+
     }
+
+
 }

@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="AppTheme." parent="MyCustumTheme">
+        <!-- making the status(where the battery and wifi icons appear) Translucent(transparent),
+       will also take of any margin that was between the  status bar and the view bellow it.
+       only works on API 19 and up.
+       Note: to make sure there is a padding between the status bar(while it is
+        translucent-transparent) and the layout below it, add 'android:fitsSystemWindows="true"' as
+       the layout(the one bellow the status bar) attribute-->
+        <item name="android:windowTranslucentStatus">true</item>
+    </style>
+</resources>

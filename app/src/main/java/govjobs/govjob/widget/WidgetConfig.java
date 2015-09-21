@@ -5,17 +5,16 @@ import android.appwidget.AppWidgetManager;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.RemoteViews;
 
-import govjobs.govjob.Constants;
-import govjobs.govjob.EditTextErrorHandler;
-import govjobs.govjob.Field;
-import govjobs.govjob.Form;
-import govjobs.govjob.FormUtils;
-import govjobs.govjob.InRange;
+import govjobs.govjob.util.Constants;
+import govjobs.govjob.util.EditTextErrorHandler;
+import govjobs.govjob.util.Field;
+import govjobs.govjob.util.Form;
+import govjobs.govjob.util.FormUtils;
+import govjobs.govjob.util.InRange;
 import govjobs.govjob.R;
 
 
@@ -58,18 +57,13 @@ public class WidgetConfig extends AppCompatActivity {
     // Form used for validation
     private Form mForm;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_widget_config);
 
         mNumbJobConfigTxt = (EditText) findViewById(R.id.numbJobConfigTxt);
-
-
-        // Set the result to CANCELED.  This will cause the widget host to cancel
-        // out of the widget placement if the user presses the back button.
-        setResult(Activity.RESULT_CANCELED);
-
 
         //A: First, get the App Widget ID from the Intent that launched the Activity.
         Bundle extra = getIntent().getExtras();
@@ -84,6 +78,10 @@ public class WidgetConfig extends AppCompatActivity {
             finish();
             return;
         }
+// Set the result to CANCELED.  This will cause the widget host to cancel
+        // out of the widget placement if the user presses the back button.
+        setResult(Activity.RESULT_CANCELED);
+
 
         //B: Perform your App Widget configuration.
 
@@ -94,6 +92,8 @@ public class WidgetConfig extends AppCompatActivity {
         initLoginValidationForm();//initializing form element
         FormUtils.hideKeyboard(this, mNumbJobConfigTxt);
         if (mForm.isValid()) {
+
+
 
             // C: When the configuration is complete, get an instance of the AppWidgetManager
             //by calling getInstance(Context).
@@ -108,14 +108,17 @@ public class WidgetConfig extends AppCompatActivity {
             updateWidgetIntent.putExtra(AppWidgetManager.EXTRA_APPWIDGET_ID,
                     mAppWidgetId);
 
+            //let save the number of job to display in the sharedpreference
+            String numb_job = mNumbJobConfigTxt.getText().toString();
+            saveInSharedprefences(numb_job);
+
             //start a service that will download our data from the net
             Intent serviceIntent = new Intent(this, FetchDataService.class);
-            Log.d(LOG, "serviceIntent: " + AppWidgetManager.EXTRA_APPWIDGET_ID + " and default: " + mAppWidgetId);
             //serviceIntent.
             serviceIntent.putExtra(AppWidgetManager.EXTRA_APPWIDGET_ID, mAppWidgetId);
             //    serviceIntent.putExtra(AppWidgetManager.EXTRA_APPWIDGET_ID, mAppWidgetId);
             serviceIntent.putExtra(Constants.NUMBER_OF_JOB_ON_WIDGET,
-                    Integer.parseInt(mNumbJobConfigTxt.getText().toString()));
+                    Integer.parseInt(numb_job));
             startService(serviceIntent);
 
             //finish the activity
@@ -127,6 +130,20 @@ public class WidgetConfig extends AppCompatActivity {
 
 
     }
+
+
+
+    /**
+     * save number of job to display on the widget in our sharepreferences
+     *
+     * @param number_job is the number of job user will choose to display on the widget
+     */
+    public void saveInSharedprefences(String number_job) {
+        Constants  constants = new Constants(this);
+        constants.EDITOR.putString(Constants.NUMBER_OF_JOB_ON_WIDGET, number_job);
+        constants.EDITOR.commit();
+    }
+
 
 
     private void initLoginValidationForm() {

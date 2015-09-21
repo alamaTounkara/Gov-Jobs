@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- go to https://www.google.com/design/spec/style/color.html#color-color-palette to find
+ google colors for android and how to use them-->
+
+    <!-- the toolbar(action bar) backgroud color. It is called color primary  -->
+    <color name="MyPrimaryColor">#F5F5F5</color>
+
+    <!-- the status bar(where the battery icon, wifi icon and so on appear) backgroud color.
+     It is called  color primary dark -->
+    <color name="MyPrimaryColorDark">#9E9E9E</color>
+
+    <!-- The text color of the the action bar texts-->
+    <color name="MyTextColorPrimary">#000000</color>
+
+    <!-- The color of overflow item icon( as the 3 dots vertical bars to respresent the menu icon)-->
+    <color name="MySecondaryColor">#000000</color>
+
+    <color name="MyAccentColor">#F18F01</color>
+
+</resources>

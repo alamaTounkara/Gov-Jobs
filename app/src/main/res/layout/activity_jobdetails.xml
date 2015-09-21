@@ -1,6 +1,6 @@
 <RelativeLayout  xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    tools:context="govjobs.govjob.JobDetailsActivity"
+    tools:context="govjobs.govjob.ui.JobDetailsActivity"
     android:orientation="vertical" android:layout_width="fill_parent"
     android:layout_height="fill_parent" android:id="@+id/RelativeLayout1">
 
@@ -87,17 +87,6 @@
                     android:layout_marginTop="-1dp"
                     style="?android:attr/borderlessButtonStyle"
                     android:visibility="gone"/>
-
-                <!--<TextView-->
-                    <!--android:layout_width="wrap_content"-->
-                    <!--android:layout_height="wrap_content"-->
-                    <!--android:textAppearance="?android:attr/textAppearanceSmall"-->
-                    <!--android:id="@+id/saveTxt"-->
-                    <!--android:layout_marginRight="5dp"-->
-                    <!--android:textStyle="bold"-->
-                    <!--android:autoText="false"-->
-                    <!--android:background="@android:drawable/btn_star_big_off"-->
-                    <!--android:layout_marginTop="-1dp" />-->
             </LinearLayout>
 
             <LinearLayout

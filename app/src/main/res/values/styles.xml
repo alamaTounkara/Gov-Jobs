@@ -1,19 +1,49 @@
 <resources>
 
-    <!-- Base application theme. -->
-    <style name="AppTheme" parent="Theme.AppCompat.Light">
+    <!-- Base application theme. This is for version lower than android v21(Lollipop)
+     it extends our 'MyCustumTheme' style defined bellow-->
+    <style name="AppTheme" parent="MyCustumTheme">
         <!-- Customize your theme here. -->
     </style>
 
 
 
     -->
-    <style name="AppBaseTheme" parent="android:Theme.Light">
+    <!--<style name="AppBaseTheme" parent="android:Theme.Light">-->
+        <!--&lt;!&ndash;-->
+            <!--Theme customizations available in newer API levels can go in-->
+            <!--res/values-vXX/styles.xml, while customizations related to-->
+            <!--backward-compatibility can go here.-->
+        <!--&ndash;&gt;-->
+    <!--</style>-->
+    <!-- -->
+    -->
+    <style name="MyCustumTheme" parent="Theme.AppCompat.Light.NoActionBar">
         <!--
             Theme customizations available in newer API levels can go in
             res/values-vXX/styles.xml, while customizations related to
             backward-compatibility can go here.
         -->
+        <!-- the status bar(where the battery icon, wifi icon and so on appear) background color.
+       It is called  colorPrimaryDark -->
+        <item name="colorPrimaryDark">@color/MyPrimaryColorDark</item>
+
+        <!-- the toolbar(action bar) backgroud color. It is called colorPrimary  -->
+        <item name="colorPrimary">@color/MyPrimaryColor</item>
+
+        <!-- accent color is used for your primary action button and components like switches or sliders.-->
+        <item name="colorAccent">@color/MyAccentColor</item>
+    </style>
+
+    <style name="MyToolBarTheme" parent="ThemeOverlay.AppCompat.Dark">
+        <!-- We want our toolbar to inherit the characterics of 'ThemeOverlay.AppCompat.Dark'
+        But we also want to customize the bellow ones
+       -->
+        <!-- The text color of the the action bar texts-->
+        <item name="android:textColorPrimary">@color/MyTextColorPrimary</item>
+        <!-- The color of overflow item icon( as the 3 dots vertical bars to respresent the menu icon)-->
+        <item name="android:textColorSecondary">@color/MySecondaryColor</item>
+        <item name="colorPrimary">@color/MyPrimaryColor</item>
     </style>
 
     <!-- Application theme. -->

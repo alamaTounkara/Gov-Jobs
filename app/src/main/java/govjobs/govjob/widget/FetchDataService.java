@@ -12,11 +12,11 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 import java.util.HashMap;
 
-import govjobs.govjob.CallBackInterface;
-import govjobs.govjob.Constants;
-import govjobs.govjob.NonUIFragmentForTask;
-import govjobs.govjob.ParserAdapter;
-import govjobs.govjob.Task;
+import govjobs.govjob.util.CallBackInterface;
+import govjobs.govjob.util.Constants;
+import govjobs.govjob.util.NonUIFragmentForTask;
+import govjobs.govjob.util.ParserAdapter;
+import govjobs.govjob.task.Task;
 
 public class FetchDataService extends Service implements CallBackInterface {
 
@@ -31,37 +31,39 @@ public class FetchDataService extends Service implements CallBackInterface {
     private int mAppWidgetId = AppWidgetManager.INVALID_APPWIDGET_ID;
     private int mNumberOfJobToFetch;//default
 
+
+
+    @Override
+    public void onCreate() {
+        super.onCreate();
+    }
+
     @Override
     public int onStartCommand(Intent intent, int flags, int startId) {
-
         if (intent.hasExtra(AppWidgetManager.EXTRA_APPWIDGET_ID)) {
             try {
-                Log.d(LOG, "AppWidgetManager.EXTRA_APPWIDGET_ID: " + intent.getIntExtra(AppWidgetManager.EXTRA_APPWIDGET_ID,
-                        AppWidgetManager.INVALID_APPWIDGET_ID));
                 mAppWidgetId = intent.getIntExtra(
                         AppWidgetManager.EXTRA_APPWIDGET_ID,
                         AppWidgetManager.INVALID_APPWIDGET_ID);
                 if(mAppWidgetId!=0)
 
-                mNumberOfJobToFetch = intent.getIntExtra(Constants.NUMBER_OF_JOB_ON_WIDGET, 100);
+                mNumberOfJobToFetch = intent.getIntExtra(Constants.NUMBER_OF_JOB_ON_WIDGET, 50);
             } catch (Exception e) {
                 Log.d(LOG, "" + e);
             }
-
             manageSearch();//fetch data from our URL
         }
-
-
-        return super.onStartCommand(intent, flags, startId);
+        return START_STICKY;
     }
 
 
     //helper method for job search
     private void manageSearch() {
-        Log.d(LOG, "USA_JOB_BASE_URL + mNumberOfJobToFetch: " + USA_JOB_BASE_URL + mNumberOfJobToFetch);
-        startTaskOnResume(USA_JOB_BASE_URL + mNumberOfJobToFetch);// we defined startTask() in mNonUITaskFragment
-        populateWidget();
-        mJSONObject = ParserAdapter.getMyJsonObject();
+        String url = USA_JOB_BASE_URL + mNumberOfJobToFetch;
+        startTaskOnResume(url);// we defined startTask() in mNonUITaskFragment
+        //populateWidget();
+
+
     }
 
 
@@ -85,7 +87,7 @@ public class FetchDataService extends Service implements CallBackInterface {
 
     //send a broadcast, which will be caught by our appWidgetProvider
     public void populateWidget() {
-        Intent intent = new Intent();
+        Intent intent = new Intent(this,GovJobAppWidgetProvider.class);
         intent.setAction(Constants.ACTION_SERVICE_FINISH_FECTH);
         intent.putExtra(AppWidgetManager.EXTRA_APPWIDGET_ID, mAppWidgetId);
         //intent.putExtra(Constants.ACTION_INDIVIDUAL_ITEM_IN_WIDGET_POSITION,mResult);
@@ -105,8 +107,8 @@ public class FetchDataService extends Service implements CallBackInterface {
 
     @Override
     public void onPostExecute(ArrayList<HashMap<String, String>> result) {
-        mResult = result;
+        CollectionService.mDataSource = result;
+        mJSONObject = ParserAdapter.getMyJsonObject();
+        populateWidget();
     }
-
-
 }
